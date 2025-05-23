@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/shiwa-sh/usdl/chat/foundation/logger"
+	"github.com/shiwa-sh/usdl/chat/foundation/web"
 	"os"
 	"os/signal"
 	"runtime"
@@ -13,7 +14,7 @@ func main() {
 	var log *logger.Logger
 
 	traceIDFn := func(ctx context.Context) string {
-		return "" // TODO: NEED TRACE IDs
+		return web.GetTraceID(ctx).String()
 	}
 
 	log = logger.New(os.Stdout, logger.LevelInfo, "CAP", traceIDFn)
